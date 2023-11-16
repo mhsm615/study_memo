@@ -1,9 +1,19 @@
 ## Ruby
 ### %記法(忘れがち)
 参考：https://qiita.com/mogulla3/items/46bb876391be07921743
-後整備 
-### 
-
+### CentOSでruby-buildのUpdate(忘れがち)
+インストールしようと思ったバージョンがない時
+ruby-buildの入っている位置に移動して最新をpull
+```
+cd /usr/local/rbenv/plugins/ruby-build
+git pull origin master
+sudo ./install.sh
+rbenv install -l
+  ...
+  ...
+rbenv install ○○○
+rbenv rehash
+```
 ## Rails
 ### コールバックの順番
 実行される順番
@@ -80,3 +90,8 @@ config/division/class_type.yml
   class_type_id: 5
   name: 宙
 ```
+
+## その他
+### centos7でmysql8をインストールができない
+これいつ困ったのだろう、でも対処法としてメモしてあったので一旦貼っておく
+https://masalib.hatenablog.com/entry/2020/11/12/222647
