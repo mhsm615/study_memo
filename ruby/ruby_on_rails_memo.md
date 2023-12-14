@@ -91,6 +91,25 @@ config/division/class_type.yml
   name: 宙
 ```
 
+### db/seed.rb等のテストデータで親テーブルに紐づく子テーブルを多言語で複数作成したい
+lambda等でブロックにしてから親テーブルをcreateする時に渡して呼び出すとスッキリする
+
+```
+# config/initializers/locale.rb
+I18n.available_locales = [:en, :ja, :zh-TW]
+```
+```
+ greeting = lambda do
+  I18n.available_locales.map do |greet|
+    Greet.new(greet:)
+  end
+end
+
+Human.create!(
+  name: '鈴木', live: 'japan', licenses: build_licenses.call
+)
+```
+
 ## その他
 ### centos7でmysql8をインストールができない
 これいつ困ったのだろう、でも対処法としてメモしてあったので一旦貼っておく
