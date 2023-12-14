@@ -106,7 +106,7 @@ I18n.available_locales = [:en, :ja, :zh-TW]
 end
 
 Human.create!(
-  name: '鈴木', live: 'japan', licenses: build_licenses.call
+  name: '鈴木', live: 'japan', greets: greeting.call
 )
 ```
 
