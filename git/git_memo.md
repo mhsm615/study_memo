@@ -1,3 +1,6 @@
+### git関連で一番好きな記事、初心を忘れるな
+https://anond.hatelabo.jp/20190203175803
+
 ### 直前のcommitを取り消す
 ```
 git reset --soft HEAD^
@@ -21,4 +24,9 @@ git diff -y ○○.text ○○.text
 ### diffの文字化けを日本語に戻す
 ```
 git config --global core.pager "LESSCHARSET=utf-8 less"
+```
+### 既にマージされたbranchをcherry-pickしたい
+* 差し戻し対応が発生したとかの時...
+```
+git cherry-pick -m 1 マージされたPRのcommit番号
 ```
