@@ -30,3 +30,10 @@ git config --global core.pager "LESSCHARSET=utf-8 less"
 ```
 git cherry-pick -m 1 マージされたPRのcommit番号
 ```
+### 他人のPRを引き継ぐ時
+* 途中からお願いします等の
+```
+git fetch origin pull/ID/head:BRANCHNAME
+```
+https://qiita.com/tarr1124/items/d807887418671adbc46f
+
