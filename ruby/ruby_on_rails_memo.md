@@ -14,6 +14,50 @@ rbenv install -l
 rbenv install ○○○
 rbenv rehash
 ```
+### 同音文字を数える
+String#charsで全ての文字を配列で返し、Array#tallyを組み合わせて一つの文字列に同音文字が何個あるか数えられる
+```
+irb(main):036> "haruharara".chars
+=> ["h", "a", "r", "u", "h", "a", "r", "a", "r", "a"]
+irb(main):037> "haruharara".chars.tally
+=> {"h"=>2, "a"=>4, "r"=>3, "u"=>1}
+```
+### 定数の警告
+```
+# 恐らく...
+再定義→実行できるけど警告
+途中で数とか代入する→平気
+式の途中で変数のように使う→シンタックスエラー
+```
+### 正規表現での「|」は部分一致になるので気を付ける
+```
+\A[Ss]ora\z
+```
+とブラケット([])に特定の文字を記載すればそれのみマッチするが
+```
+\AS|sora\z
+```
+とすると、左辺の判定でSに別の文字が続いてもマッチしてしまう(S110等)
+### 複数条件がある三項演算子はif~else~end表記にするとわかりやすい
+Ruby Silverの問題
+```
+a = [1, 2, 3, 5, 8]
+b = [1, 3, 6, 7, 8]
+c = false || true ? true && false ? a | b : a & b : b ;
+p c
+```
+一行だと分かり辛いので条件文に直す
+```
+if false || true #=>true
+  if true && false #=>false
+    a | b
+  else
+    a & b
+  end
+  b
+end
+# 実務でここまで一行にすることはあまりないと思う...
+```
 ## Rails
 ### コールバックの順番
 実行される順番
@@ -109,7 +153,6 @@ Human.create!(
   name: '鈴木', live: 'japan', greets: greeting.call
 )
 ```
-
 ## その他
 ### centos7でmysql8をインストールができない
 これいつ困ったのだろう、でも対処法としてメモしてあったので一旦貼っておく
