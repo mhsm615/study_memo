@@ -163,6 +163,21 @@ Human.create!(
   name: '鈴木', live: 'japan', greets: greeting.call
 )
 ```
+
+### FactoryBotで特定の順番のまま値をいれたい
+どちらかというとRSpec
+```
+FactoryBot.define do
+  factory :hoge do
+    sequence(:color, %w[桃 黄 緑 青 紫 赤].cycle)
+  end
+end
+```
+create_list(:hoge)とかすると桃 黄 緑 青 紫 赤の順番で作成される
+enumなので文字列に入れたい場合は.next等で表示させる
+```
+sequence(:favorite, "好きなカラーは(#{%w[桃 黄 緑 青 紫 赤].cycle.next})です")
+```
 ## その他
 ### centos7でmysql8をインストールができない
 これいつ困ったのだろう、でも対処法としてメモしてあったので一旦貼っておく
