@@ -178,6 +178,16 @@ enumなので文字列に入れたい場合は.next等で表示させる
 ```
 sequence(:favorite, "好きなカラーは(#{%w[桃 黄 緑 青 紫 赤].cycle.next})です")
 ```
+### rails7.1以降はRSpecが例外をキャッチしない
+[コントローラーテスト、結合テスト、システムテストの例外処理方法が新しくなった](https://railsguides.jp/upgrading_ruby_on_rails.html#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E3%80%81%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E3%80%81%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B%E5%A4%96%E5%87%A6%E7%90%86%E6%96%B9%E6%B3%95%E3%81%8C%E6%96%B0%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F)
+
+`ActiveRecord::RecordNotFound`をキャッチするテストで詰まったのでメモ
+```
+:rescuable: config.action_dispatch.rescue_responsesで宣言されている例外についてはHTMLエラーページを表示する
+Rails 7.1以降で生成したアプリケーションのconfig/environments/test.rbには config.action_dispatch.show_exceptions = :rescuableが設定されます。
+```
+[ここ](https://railsguides.jp/configuring.html#config-action-dispatch-perform-deep-munge)にある例外が対象
+
 ## その他
 ### centos7でmysql8をインストールができない
 これいつ困ったのだろう、でも対処法としてメモしてあったので一旦貼っておく
